@@ -109,27 +109,27 @@ export default function MenuExplorer() {
   return (
     <section
       id="menu"
-      className="py-24 bg-white relative overflow-hidden"
+      className="min-h-screen lg:h-[100svh] py-20 lg:py-8 bg-emerald-50/55 backdrop-blur-[1px] relative overflow-hidden flex items-center"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="w-full px-5 sm:px-8 lg:px-12 xl:px-16 2xl:px-20">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 flex flex-col items-center gap-3">
+        <div className="text-center max-w-3xl mx-auto mb-10 lg:mb-8 flex flex-col items-center gap-3">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold uppercase tracking-wider">
             <Leaf className="w-3.5 h-3.5 fill-current" />
             <span>Giai Đoạn 4: Trải Nghiệm Thực Đơn</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-text-dark tracking-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-[2.35rem] font-extrabold text-text-dark tracking-tight leading-tight">
             Thực Đơn Thiết Kế Riêng Cho Sức Khỏe
           </h2>
-          <p className="text-text-secondary text-base sm:text-lg">
+          <p className="text-text-secondary text-base lg:text-[1.05rem]">
             Mỗi món ăn đều cân đối hoàn hảo về mặt calo và dưỡng chất cần thiết, giúp bạn duy trì vóc dáng nhẹ nhàng mà không mệt mỏi.
           </p>
         </div>
 
         {/* Tabs Control */}
         <Tabs defaultValue="breakfast" className="w-full flex flex-col items-center">
-          <TabsList className="bg-slate-100 p-1 rounded-full w-full max-w-md border border-slate-200/60 mb-12 flex justify-between">
+          <TabsList className="bg-slate-100 p-1 rounded-full w-full max-w-md border border-slate-200/60 mb-8 lg:mb-6 flex justify-between">
             <TabsTrigger value="breakfast" className="rounded-full py-2.5 px-6 font-semibold flex-1">
               Bữa Sáng
             </TabsTrigger>
@@ -143,7 +143,7 @@ export default function MenuExplorer() {
 
           {Object.keys(menuData).map((key) => (
             <TabsContent key={key} value={key} className="w-full">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 xl:gap-8 w-full">
                 {menuData[key].map((meal, idx) => {
                   const isSelected = selectedMeals.includes(meal.name);
                   return (
@@ -152,7 +152,7 @@ export default function MenuExplorer() {
                       initial={{ opacity: 0, y: 30 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5, delay: idx * 0.15 }}
-                      className={`relative bg-stone-50 border p-6 sm:p-8 rounded-3xl transition-all duration-300 hover:shadow-xl hover:shadow-slate-100 flex flex-col justify-between ${
+                      className={`relative bg-white/60 border p-6 lg:p-5 xl:p-7 rounded-3xl transition-all duration-300 hover:bg-white hover:shadow-2xl flex flex-col justify-between ${
                         isSelected
                           ? "border-primary bg-emerald-50/20 shadow-md shadow-primary/5"
                           : "border-slate-100"
@@ -169,7 +169,7 @@ export default function MenuExplorer() {
 
                         <h3 className="text-xl font-extrabold text-text-dark leading-tight">{meal.vietnameseName}</h3>
                         <p className="text-xs text-text-light font-medium tracking-wide uppercase mt-1 mb-3">{meal.name}</p>
-                        <p className="text-sm text-text-secondary leading-relaxed mb-6">{meal.description}</p>
+                        <p className="text-sm lg:text-xs xl:text-sm text-text-secondary leading-relaxed mb-5">{meal.description}</p>
                       </div>
 
                       {/* Bottom elements: Calories & Macros */}
@@ -220,7 +220,7 @@ export default function MenuExplorer() {
         </Tabs>
 
         {/* Storytelling stage 5: Final Transform CTA (Order / Signup) */}
-        <div id="cta" className="max-w-4xl mx-auto mt-24 bg-gradient-to-br from-primary to-primary-light text-white rounded-3xl p-8 sm:p-12 shadow-xl shadow-primary/20 relative overflow-hidden flex flex-col items-center text-center gap-6 z-10">
+        <div id="cta" className="w-full mt-16 lg:hidden bg-gradient-to-br from-primary to-primary-light text-white rounded-3xl p-8 sm:p-12 shadow-xl shadow-primary/20 relative overflow-hidden flex flex-col items-center text-center gap-6 z-10">
           <div className="absolute top-[-30%] left-[-20%] w-[300px] h-[300px] rounded-full bg-white/5 blur-2xl -z-10" />
           <div className="absolute bottom-[-30%] right-[-20%] w-[300px] h-[300px] rounded-full bg-white/5 blur-2xl -z-10" />
 

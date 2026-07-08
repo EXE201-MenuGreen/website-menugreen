@@ -10,13 +10,13 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center justify-center pt-24 pb-16 overflow-hidden bg-gradient-to-br from-emerald-50/50 via-white to-stone-50"
+      className="relative min-h-screen flex items-center justify-center pt-24 pb-16 overflow-hidden bg-white/70 backdrop-blur-[1px]"
     >
-      {/* Background Decorative Blobs */}
-      <div className="absolute top-[-10%] right-[-10%] w-[50vw] h-[50vw] rounded-full bg-emerald-100/40 blur-3xl -z-10" />
-      <div className="absolute bottom-[-10%] left-[-10%] w-[40vw] h-[40vw] rounded-full bg-stone-100/60 blur-3xl -z-10" />
+      {/* Background Decorative Glowing Blobs (Sleepiest-Inspired Light Edition) */}
+      <div className="absolute top-[-10%] right-[-10%] w-[50vw] h-[50vw] rounded-full bg-emerald-100/35 blur-3xl -z-10" />
+      <div className="absolute bottom-[-10%] left-[-10%] w-[40vw] h-[40vw] rounded-full bg-emerald-200/25 blur-3xl -z-10" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      <div className="w-full px-5 sm:px-8 lg:px-12 xl:px-16 2xl:px-20">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           
           {/* Story & Headings */}
@@ -88,7 +88,7 @@ export default function HeroSection() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1, delay: 0.6 }}
-              className="grid grid-cols-3 gap-6 pt-6 mt-6 border-t border-slate-200/80 w-full max-w-lg"
+              className="grid grid-cols-3 gap-6 pt-6 mt-6 border-t border-white/10 w-full max-w-lg"
             >
               <div className="flex items-start gap-2.5">
                 <div className="p-2 rounded-xl bg-primary/10 text-primary shrink-0">

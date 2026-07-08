@@ -57,26 +57,26 @@ export default function PricingSection() {
   return (
     <section
       id="pricing"
-      className="py-24 bg-gradient-to-br from-emerald-50/20 via-white to-stone-50 relative overflow-hidden"
+      className="min-h-screen lg:h-[100svh] py-20 lg:py-8 bg-white/70 backdrop-blur-[1px] relative overflow-hidden flex items-center"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="w-full px-5 sm:px-8 lg:px-12 xl:px-16 2xl:px-20">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 flex flex-col items-center gap-3">
+        <div className="text-center max-w-3xl mx-auto mb-10 lg:mb-8 flex flex-col items-center gap-3">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold uppercase tracking-wider">
             <Sparkles className="w-3.5 h-3.5" />
             <span>Giai Đoạn 5: Đồng Hành Bền Vững</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-text-dark tracking-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-[2.35rem] font-extrabold text-text-dark tracking-tight leading-tight">
             Chọn Gói Dinh Dưỡng Phù Hợp Thể Trạng
           </h2>
-          <p className="text-text-secondary text-base sm:text-lg">
+          <p className="text-text-secondary text-base lg:text-[1.05rem]">
             Được định lượng dinh dưỡng khoa học bởi chuyên gia để đồng hành cùng bạn trên con đường nâng cao chất lượng cuộc sống.
           </p>
         </div>
 
         {/* Pricing Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto items-stretch">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 xl:gap-8 w-full items-stretch">
           {plans.map((plan, idx) => (
             <motion.div
               key={plan.title}
@@ -84,7 +84,7 @@ export default function PricingSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.5, delay: idx * 0.15 }}
-              className={`relative bg-white border rounded-3xl p-8 flex flex-col justify-between transition-all duration-300 hover:shadow-2xl ${
+              className={`relative bg-white border rounded-3xl p-6 xl:p-8 flex flex-col justify-between transition-all duration-300 hover:shadow-2xl ${
                 plan.popular
                   ? "border-primary-light shadow-xl shadow-primary/5 md:scale-105 z-10"
                   : "border-slate-100 shadow-lg shadow-slate-100/50"
@@ -111,12 +111,12 @@ export default function PricingSection() {
                   <span className="text-xs text-text-secondary font-semibold">/ {plan.period}</span>
                 </div>
 
-                <p className="text-sm text-text-secondary leading-relaxed mb-6 border-b border-slate-100 pb-6">
+                <p className="text-sm lg:text-xs xl:text-sm text-text-secondary leading-relaxed mb-5 border-b border-slate-100 pb-5">
                   {plan.description}
                 </p>
 
                 {/* Features List */}
-                <ul className="space-y-3.5 mb-8">
+                <ul className="space-y-3 lg:space-y-2.5 xl:space-y-3.5 mb-6 xl:mb-8">
                   {plan.features.map((feature, fIdx) => (
                     <li key={fIdx} className="flex items-start gap-2.5 text-sm text-text-secondary">
                       <Check className="w-4 h-4 text-primary shrink-0 mt-0.5" />

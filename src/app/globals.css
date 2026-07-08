@@ -59,11 +59,11 @@
 :root {
   --background: #FFFFFF;
   --foreground: #0F172A;
-  --card: #FFFFFF;
+  --card: rgba(255, 255, 255, 0.7); /* Frosted light glassmorphic card */
   --card-foreground: #0F172A;
   --popover: #FFFFFF;
   --popover-foreground: #0F172A;
-  --primary: #1B4332;
+  --primary: #1B4332; /* Original dark forest green */
   --primary-foreground: #FFFFFF;
   --secondary: #2D5A45;
   --secondary-foreground: #FFFFFF;
@@ -73,22 +73,22 @@
   --accent-foreground: #FFFFFF;
   --destructive: #EF4444;
   --destructive-foreground: #FFFFFF;
-  --border: #E2E8F0;
-  --input: #E2E8F0;
+  --border: rgba(27, 67, 50, 0.08);
+  --input: rgba(27, 67, 50, 0.04);
   --ring: #1B4332;
   --chart-1: #1B4332;
   --chart-2: #2D5A45;
   --chart-3: #4A5568;
   --chart-4: #A0AEC0;
   --chart-5: #0F172A;
-  --radius: 0.75rem;
+  --radius: 1.25rem;
   --sidebar: #FFFFFF;
   --sidebar-foreground: #0F172A;
   --sidebar-primary: #1B4332;
   --sidebar-primary-foreground: #FFFFFF;
   --sidebar-accent: #E2E8F0;
   --sidebar-accent-foreground: #1B4332;
-  --sidebar-border: #E2E8F0;
+  --sidebar-border: rgba(27, 67, 50, 0.08);
   --sidebar-ring: #1B4332;
 }
 
@@ -127,9 +127,76 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-[#F6FAEF] text-foreground;
   }
   html {
-    @apply font-sans;
+    @apply font-sans scroll-smooth;
+  }
+  .landing-page {
+    background-image:
+      linear-gradient(135deg, rgba(248, 250, 248, 0.9), rgba(255, 255, 255, 0.74) 45%, rgba(238, 246, 240, 0.86)),
+      url("/landing-background.webp");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: repeat;
+    background-size: auto, 520px 520px;
+  }
+  .landing-section-reveal {
+    position: relative;
+  }
+  .landing-phone-float {
+    animation: phone-air-float 5.6s ease-in-out infinite;
+    transform-origin: center;
+    will-change: transform;
+  }
+  .landing-phone-float::after {
+    content: "";
+    position: absolute;
+    left: 22%;
+    right: 16%;
+    bottom: -22px;
+    height: 20px;
+    border-radius: 999px;
+    background: rgba(27, 67, 50, 0.12);
+    filter: blur(16px);
+    animation: phone-air-shadow 5.6s ease-in-out infinite;
+    pointer-events: none;
+  }
+  @keyframes phone-air-float {
+    0%,
+    100% {
+      transform: translate3d(0, 0, 0);
+    }
+    50% {
+      transform: translate3d(0, -14px, 0);
+    }
+  }
+  @keyframes phone-air-shadow {
+    0%,
+    100% {
+      opacity: 0.72;
+      transform: scaleX(1);
+    }
+    50% {
+      opacity: 0.38;
+      transform: scaleX(0.82);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .landing-phone-float,
+    .landing-phone-float::after {
+      animation: none;
+    }
+  }
+  @media (min-width: 1024px) {
+    html {
+      scroll-snap-type: y mandatory;
+    }
+    section,
+    footer,
+    .landing-section-reveal {
+      scroll-snap-align: start;
+      scroll-margin-top: 0;
+    }
   }
 }

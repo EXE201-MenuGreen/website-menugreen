@@ -20,7 +20,7 @@ export default function Footer() {
               Kiến tạo hành trình dinh dưỡng xanh lành mạnh, đưa những bữa ăn hữu cơ tinh khiết từ thiên nhiên đến bàn ăn của bạn.
             </p>
             <p className="text-xs font-semibold text-primary-light tracking-wide uppercase italic">
-              "Ăn xanh • Sống sạch • Trọn sức sống"
+              &quot;Ăn xanh • Sống sạch • Trọn sức sống&quot;
             </p>
           </div>
 
@@ -29,6 +29,7 @@ export default function Footer() {
             <h3 className="text-white font-semibold text-sm tracking-wider uppercase mb-4">Khám Phá</h3>
             <ul className="space-y-2 text-sm text-slate-400">
               <li><a href="#hero" className="hover:text-primary-light transition-colors">Trang chủ</a></li>
+              <li><a href="#app" className="hover:text-primary-light transition-colors">Ứng dụng</a></li>
               <li><a href="#philosophy" className="hover:text-primary-light transition-colors">Câu chuyện</a></li>
               <li><a href="#metrics" className="hover:text-primary-light transition-colors">Tính toán sức khỏe</a></li>
               <li><a href="#menu" className="hover:text-primary-light transition-colors">Thực đơn xanh</a></li>

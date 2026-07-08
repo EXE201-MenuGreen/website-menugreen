@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Activity, Dumbbell, Droplet, Sparkles, AlertCircle } from "lucide-react";
 import { Progress } from "@/components/ui/progress";
@@ -9,35 +9,23 @@ export default function InteractiveMetric() {
   const [weight, setWeight] = useState<number>(65);
   const [height, setHeight] = useState<number>(170);
   const [greenMeals, setGreenMeals] = useState<number>(7); // meals per week
-  const [bmi, setBmi] = useState<number>(22.5);
-  const [vitalityScore, setVitalityScore] = useState<number>(70);
-  const [waterIntake, setWaterIntake] = useState<number>(2.3);
 
-  // Recalculate values dynamically when inputs change
-  useEffect(() => {
-    // Calculate BMI
-    const heightInMeters = height / 100;
-    const computedBmi = weight / (heightInMeters * heightInMeters);
-    setBmi(parseFloat(computedBmi.toFixed(1)));
+  const heightInMeters = height / 100;
+  const computedBmi = weight / (heightInMeters * heightInMeters);
+  const bmi = parseFloat(computedBmi.toFixed(1));
+  const mealScore = (greenMeals / 21) * 35;
+  let bmiScore = 20;
 
-    // Calculate Vitality Score (out of 100)
-    // 50 base + meal contribution (up to 30) + healthy BMI contribution (up to 20)
-    const mealScore = (greenMeals / 21) * 35;
-    let bmiScore = 20;
-    if (computedBmi < 18.5) {
-      bmiScore = 10;
-    } else if (computedBmi > 24.9 && computedBmi < 29.9) {
-      bmiScore = 12;
-    } else if (computedBmi >= 29.9) {
-      bmiScore = 5;
-    }
-    const computedVitality = Math.min(100, Math.round(50 + mealScore + bmiScore));
-    setVitalityScore(computedVitality);
+  if (computedBmi < 18.5) {
+    bmiScore = 10;
+  } else if (computedBmi > 24.9 && computedBmi < 29.9) {
+    bmiScore = 12;
+  } else if (computedBmi >= 29.9) {
+    bmiScore = 5;
+  }
 
-    // Calculate Water Intake (liters)
-    const computedWater = weight * 0.035;
-    setWaterIntake(parseFloat(computedWater.toFixed(1)));
-  }, [weight, height, greenMeals]);
+  const vitalityScore = Math.min(100, Math.round(50 + mealScore + bmiScore));
+  const waterIntake = parseFloat((weight * 0.035).toFixed(1));
 
   const getBmiCategory = (value: number) => {
     if (value < 18.5) return { label: "Thiếu cân", color: "text-amber-600 bg-amber-50" };
@@ -51,29 +39,29 @@ export default function InteractiveMetric() {
   return (
     <section
       id="metrics"
-      className="py-24 bg-gradient-to-br from-stone-50 via-emerald-50/20 to-white relative overflow-hidden"
+      className="min-h-screen lg:h-[100svh] py-20 lg:py-8 bg-white/65 backdrop-blur-[1px] relative overflow-hidden flex items-center"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="w-full px-5 sm:px-8 lg:px-12 xl:px-16 2xl:px-20">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 flex flex-col items-center gap-3">
+        <div className="text-center max-w-3xl mx-auto mb-10 lg:mb-8 flex flex-col items-center gap-3">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold uppercase tracking-wider">
             <Activity className="w-3.5 h-3.5" />
             <span>Giai Đoạn 3: Cân Bằng Thể Trạng</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-text-dark tracking-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-[2.35rem] font-extrabold text-text-dark tracking-tight leading-tight">
             Đo Lường Sự Thay Đổi Của Cơ Thể
           </h2>
-          <p className="text-text-secondary text-base sm:text-lg">
+          <p className="text-text-secondary text-base lg:text-[1.05rem]">
             Nhập các chỉ số cơ bản của bạn và xem việc bổ sung các bữa ăn xanh lành mạnh sẽ biến đổi năng lượng sống của bạn thế nào.
           </p>
         </div>
 
         {/* Layout Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 xl:gap-10 items-stretch">
           
           {/* Left Column: Interactive Inputs */}
-          <div className="lg:col-span-6 bg-white p-8 rounded-3xl border border-slate-100 shadow-xl shadow-slate-100/50 flex flex-col gap-8">
+          <div className="lg:col-span-6 bg-white/60 border border-white/80 backdrop-blur-md shadow-xl flex flex-col gap-6 p-6 xl:p-8">
             <h3 className="text-xl font-bold text-text-dark border-b border-slate-100 pb-4">Thông Số Cơ Thể</h3>
             
             {/* Height Slider */}
@@ -138,7 +126,7 @@ export default function InteractiveMetric() {
           <div className="lg:col-span-6 flex flex-col gap-6">
             
             {/* Vitality Score Card */}
-            <div className="bg-primary text-white p-8 rounded-3xl flex flex-col gap-5 shadow-xl shadow-primary/20 relative overflow-hidden">
+            <div className="bg-primary text-white p-6 xl:p-8 rounded-3xl flex flex-col gap-4 xl:gap-5 shadow-xl shadow-primary/20 relative overflow-hidden">
               <div className="absolute top-[-20%] right-[-20%] w-48 h-48 rounded-full bg-primary-light/30 blur-2xl" />
               
               <div className="flex justify-between items-start z-10">
@@ -177,7 +165,7 @@ export default function InteractiveMetric() {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               
               {/* BMI Card */}
-              <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-md flex flex-col gap-2 items-center text-center">
+              <div className="bg-white/60 p-6 rounded-2xl border border-white/80 backdrop-blur-md shadow-md flex flex-col gap-2 items-center text-center">
                 <Dumbbell className="w-6 h-6 text-primary mb-1" />
                 <span className="text-xs text-text-secondary uppercase font-semibold">Chỉ số BMI</span>
                 <span className="text-2xl font-black text-text-dark">{bmi}</span>
@@ -187,7 +175,7 @@ export default function InteractiveMetric() {
               </div>
 
               {/* Water Card */}
-              <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-md flex flex-col gap-2 items-center text-center">
+              <div className="bg-white/60 p-6 rounded-2xl border border-white/80 backdrop-blur-md shadow-md flex flex-col gap-2 items-center text-center">
                 <Droplet className="w-6 h-6 text-primary mb-1" />
                 <span className="text-xs text-text-secondary uppercase font-semibold">Nước mỗi ngày</span>
                 <span className="text-2xl font-black text-text-dark">{waterIntake}L</span>
@@ -195,7 +183,7 @@ export default function InteractiveMetric() {
               </div>
 
               {/* Diet Recommendation Card */}
-              <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-md flex flex-col gap-2 items-center text-center justify-center">
+              <div className="bg-white/60 p-6 rounded-2xl border border-white/80 backdrop-blur-md shadow-md flex flex-col gap-2 items-center text-center justify-center">
                 <Activity className="w-6 h-6 text-primary mb-1" />
                 <span className="text-xs text-text-secondary uppercase font-semibold">Thải độc gan</span>
                 <span className="text-2xl font-black text-text-dark">
@@ -211,7 +199,7 @@ export default function InteractiveMetric() {
         </div>
 
         {/* Core Value Propositions */}
-        <div className="mt-20 border-t border-slate-100 pt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="mt-20 border-t border-slate-100 pt-16 grid grid-cols-1 md:grid-cols-3 gap-8 lg:hidden">
           {/* Card 1: Exclude bad factors */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
