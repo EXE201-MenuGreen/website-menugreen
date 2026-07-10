@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Outfit } from "next/font/google";
+import { Inter, Noto_Serif } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -10,9 +10,9 @@ const inter = Inter({
   display: "swap",
 });
 
-const outfit = Outfit({
-  variable: "--font-heading",
-  subsets: ["latin"],
+const notoSerif = Noto_Serif({
+  variable: "--font-editorial",
+  subsets: ["latin", "vietnamese"],
   display: "swap",
 });
 
@@ -39,7 +39,7 @@ export default function RootLayout({
   return (
     <html
       lang="vi"
-      className={`${inter.variable} ${outfit.variable} scroll-smooth`}
+      className={`${inter.variable} ${notoSerif.variable} scroll-smooth`}
     >
       <body className="min-h-screen flex flex-col font-sans bg-background text-foreground antialiased selection:bg-primary/10 selection:text-primary">
         <Navbar />

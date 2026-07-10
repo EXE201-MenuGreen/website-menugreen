@@ -9,7 +9,7 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-sans);
   --font-mono: var(--font-geist-mono);
-  --font-heading: var(--font-sans);
+  --font-heading: var(--font-editorial);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -141,6 +141,13 @@
     background-repeat: repeat;
     background-size: auto, 520px 520px;
   }
+  .landing-page h1,
+  .landing-page h2,
+  .landing-page blockquote {
+    font-kerning: normal;
+    font-variant-ligatures: none;
+    text-rendering: optimizeLegibility;
+  }
   .landing-section-reveal {
     position: relative;
   }
@@ -188,15 +195,47 @@
       animation: none;
     }
   }
-  @media (min-width: 1024px) {
-    html {
-      scroll-snap-type: y mandatory;
-    }
-    section,
-    footer,
-    .landing-section-reveal {
-      scroll-snap-align: start;
-      scroll-margin-top: 0;
-    }
-  }
+}
+
+/* Editorial landing-page palette. Kept outside Tailwind layers so it wins over
+   the legacy translucent utility backgrounds during the visual-system migration. */
+#app { background-color: #f8f5ed; }
+#metrics { background-color: #e8f0e2; }
+#stories { background-color: #f8f5ed; }
+#menu { background-color: #edf3e8; }
+#pricing { background-color: #f8f5ed; }
+
+#metrics h2,
+#menu h2,
+#pricing h2 {
+  color: #183529;
+  font-family: var(--font-editorial), Georgia, serif;
+  font-size: clamp(2.6rem, 5vw, 4.5rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.02;
+}
+
+#stories h2 {
+  color: #183529;
+  font-family: var(--font-editorial), Georgia, serif;
+  font-size: clamp(2.4rem, 4vw, 3.75rem);
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  line-height: 1.08;
+}
+
+#metrics [class*="bg-white/60"],
+#stories [class*="bg-white/60"],
+#menu [class*="bg-white/60"],
+#pricing [class*="bg-white"] {
+  border-color: rgba(24, 53, 41, 0.14);
+  box-shadow: 0 20px 40px -32px rgba(24, 53, 41, 0.5);
+}
+
+#metrics [class*="rounded-3xl"],
+#stories [class*="rounded-3xl"],
+#menu [class*="rounded-3xl"],
+#pricing [class*="rounded-3xl"] {
+  border-radius: 1.5rem;
 }

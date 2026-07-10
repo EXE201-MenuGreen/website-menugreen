@@ -57,7 +57,7 @@ export default function PricingSection() {
   return (
     <section
       id="pricing"
-      className="min-h-screen lg:h-[100svh] py-20 lg:py-8 bg-white/70 backdrop-blur-[1px] relative overflow-hidden flex items-center"
+      className="py-20 lg:py-24 bg-white/70 backdrop-blur-[1px] relative overflow-hidden"
     >
       <div className="w-full px-5 sm:px-8 lg:px-12 xl:px-16 2xl:px-20">
         

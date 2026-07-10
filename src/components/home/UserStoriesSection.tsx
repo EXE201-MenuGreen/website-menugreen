@@ -179,7 +179,7 @@ export default function UserStoriesSection() {
   };
 
   return (
-    <section id="stories" className="min-h-screen lg:h-[100svh] py-20 lg:py-8 bg-white/65 backdrop-blur-[1px] relative overflow-hidden flex items-center">
+    <section id="stories" className="py-20 lg:py-24 bg-white/65 backdrop-blur-[1px] relative overflow-hidden">
       {/* Background Decorative Glowing Blobs (Sleepiest Style) */}
       <div className="absolute top-1/3 left-0 w-80 h-80 rounded-full bg-emerald-100/30 blur-3xl -z-10" />
       <div className="absolute bottom-10 right-0 w-[400px] h-[400px] rounded-full bg-stone-100/50 blur-3xl -z-10" />

@@ -39,7 +39,7 @@ export default function InteractiveMetric() {
   return (
     <section
       id="metrics"
-      className="min-h-screen lg:h-[100svh] py-20 lg:py-8 bg-white/65 backdrop-blur-[1px] relative overflow-hidden flex items-center"
+      className="py-20 lg:py-24 bg-white/65 backdrop-blur-[1px] relative overflow-hidden"
     >
       <div className="w-full px-5 sm:px-8 lg:px-12 xl:px-16 2xl:px-20">
         

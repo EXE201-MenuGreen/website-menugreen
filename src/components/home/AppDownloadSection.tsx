@@ -22,11 +22,17 @@ const weeklyMeals = [
   { name: "Cá Hồi Măng Tây", kcal: "450 kcal", tag: "Omega 3" },
 ];
 
+const appTabs = [
+  { label: "Kế hoạch ăn uống", icon: CalendarDays, active: true },
+  { label: "Chế độ dinh dưỡng", icon: Leaf, active: false },
+  { label: "Nhắc nhở lịch trình", icon: Bell, active: false },
+];
+
 export default function AppDownloadSection() {
   return (
     <section
       id="app"
-      className="min-h-screen lg:h-[100svh] py-20 lg:py-8 bg-white/70 backdrop-blur-[1px] relative overflow-hidden flex items-center"
+      className="py-20 lg:py-24 bg-white/70 backdrop-blur-[1px] relative overflow-hidden"
     >
       <div className="absolute top-[-15%] left-[-10%] w-[38vw] h-[38vw] rounded-full bg-emerald-100/35 blur-3xl -z-10" />
       <div className="absolute bottom-[-18%] right-[-10%] w-[44vw] h-[44vw] rounded-full bg-lime-100/40 blur-3xl -z-10" />
@@ -147,17 +153,37 @@ export default function AppDownloadSection() {
                 </div>
               </div>
 
-              <div className="absolute inset-x-16 bottom-[-20px] hidden h-9 rounded-[100%] bg-primary/14 blur-2xl lg:block" />
-              <div className="absolute top-16 bottom-16 right-[-2px] hidden w-2 rounded-r-[2rem] bg-slate-900/70 shadow-md lg:block lg:[transform:rotateY(-12deg)_rotateX(5deg)_translateZ(-14px)]" />
-              <div className="absolute top-20 bottom-20 left-[-2px] hidden w-1 rounded-l-[2rem] bg-slate-900/55 lg:block lg:[transform:rotateY(-12deg)_rotateX(5deg)_translateZ(-12px)]" />
+              {appTabs.map((tab, index) => (
+                <div
+                  key={tab.label}
+                  className={`absolute z-30 hidden w-36 rounded-2xl border border-white/80 bg-white/85 px-3 py-2.5 shadow-lg shadow-primary/10 backdrop-blur-md sm:flex ${
+                    index === 0
+                      ? "-left-14 top-44 lg:[transform:translateZ(44px)]"
+                      : index === 1
+                        ? "-right-16 top-72 lg:[transform:translateZ(48px)]"
+                        : "-left-12 bottom-28 lg:[transform:translateZ(46px)]"
+                  }`}
+                >
+                  <div className="flex items-center gap-2.5">
+                    <div
+                      className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-xl ${
+                        tab.active ? "bg-primary text-white" : "bg-emerald-50 text-primary"
+                      }`}
+                    >
+                      <tab.icon className="h-3.5 w-3.5" />
+                    </div>
+                    <p className="text-[11px] font-bold leading-tight text-text-dark">{tab.label}</p>
+                  </div>
+                </div>
+              ))}
 
-              <div className="relative origin-center rounded-[2.45rem] bg-gradient-to-br from-slate-700 via-slate-950 to-black p-1.5 shadow-xl shadow-primary/18 transition-transform duration-500 will-change-transform [transform-style:preserve-3d] lg:[transform:rotateY(-13deg)_rotateX(5deg)_rotateZ(.5deg)_scale(.86)] lg:hover:[transform:rotateY(-8deg)_rotateX(4deg)_rotateZ(0deg)_scale(.89)]">
-                <div className="pointer-events-none absolute inset-0 rounded-[2.75rem] border border-white/10" />
-                <div className="pointer-events-none absolute left-3 top-8 z-30 h-24 w-0.5 rounded-full bg-slate-500/45" />
-                <div className="pointer-events-none absolute -right-0.5 top-28 z-30 h-16 w-0.5 rounded-full bg-slate-800/70" />
-                <div className="pointer-events-none absolute inset-1.5 z-30 rounded-[2.15rem] bg-gradient-to-br from-white/24 via-transparent to-transparent" />
-                <div className="absolute left-1/2 top-1.5 h-3.5 w-20 -translate-x-1/2 rounded-b-2xl bg-slate-950 z-20" />
-                <div className="relative overflow-hidden rounded-[2rem] bg-[#F6FAF6] min-h-[480px] sm:min-h-[500px] lg:min-h-[510px] lg:[transform:translateZ(14px)]">
+              <div className="absolute inset-x-16 bottom-[-20px] hidden h-9 rounded-[100%] bg-primary/14 blur-2xl lg:block" />
+
+              <div className="relative origin-center rounded-[2.65rem] bg-gradient-to-br from-slate-500 via-slate-950 to-black p-[5px] shadow-[0_24px_55px_-22px_rgba(15,23,42,0.72)] transition-transform duration-500 will-change-transform [transform-style:preserve-3d] lg:[transform:rotateY(-7deg)_rotateX(2deg)_rotateZ(.3deg)_scale(.9)] lg:hover:[transform:rotateY(-3deg)_rotateX(1deg)_rotateZ(0deg)_scale(.92)]">
+                <div className="pointer-events-none absolute inset-px rounded-[2.6rem] border border-white/20" />
+                <div className="pointer-events-none absolute inset-[5px] z-30 rounded-[2.35rem] bg-gradient-to-br from-white/20 via-transparent to-transparent" />
+                <div className="absolute left-1/2 top-[5px] z-40 h-4 w-[5.2rem] -translate-x-1/2 rounded-b-2xl bg-slate-950 shadow-sm" />
+                <div className="relative overflow-hidden rounded-[2.28rem] bg-[#F6FAF6] min-h-[480px] sm:min-h-[500px] lg:min-h-[510px] lg:[transform:translateZ(8px)]">
                   <div className="bg-white/90 border-b border-emerald-900/5 px-3.5 pt-7 pb-2.5">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
