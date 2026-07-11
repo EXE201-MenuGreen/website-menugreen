@@ -3,7 +3,7 @@ import { NextResponse, type NextRequest } from "next/server";
 const CANONICAL_HOSTS = new Set(["menugreen.food", "www.menugreen.food"]);
 const REDIRECT_TARGET = "https://menugreen.food";
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const host = request.headers.get("host")?.toLowerCase() ?? "";
 
   // Bỏ qua dev / file nội bộ
