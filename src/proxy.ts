@@ -1,7 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server";
 
 const CANONICAL_HOSTS = new Set(["menugreen.food", "www.menugreen.food"]);
-const REDIRECT_TARGET = "https://menugreen.food";
 
 export async function proxy(request: NextRequest) {
   const host = request.headers.get("host")?.toLowerCase() ?? "";
@@ -16,20 +15,14 @@ export async function proxy(request: NextRequest) {
   }
 
   // Cho phép chính xác menugreen.food và www.menugreen.food
+  // Vercel đã lo phần redirect apex <-> www, không can thiệp thêm ở đây.
   if (CANONICAL_HOSTS.has(host)) {
-    // www → apex (301)
-    if (host === "www.menugreen.food") {
-      const url = request.nextUrl.clone();
-      url.host = "menugreen.food";
-      url.protocol = "https:";
-      return NextResponse.redirect(url, 301);
-    }
     return NextResponse.next();
   }
 
   // Mọi host khác (vd preview deploys, vercel.app, custom test domain) → redirect về apex
   const url = request.nextUrl.clone();
-  url.host = REDIRECT_TARGET.replace(/^https?:\/\//, "");
+  url.host = "menugreen.food";
   url.protocol = "https:";
   return NextResponse.redirect(url, 301);
 }
