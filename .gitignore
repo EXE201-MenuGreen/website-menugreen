@@ -58,3 +58,7 @@ Thumbs.db
 *.pem
 *.key
 *.crt
+
+# Vercel preview URLs and proxy cache
+.vercel/
+.turbo/
