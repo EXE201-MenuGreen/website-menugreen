@@ -21,7 +21,7 @@ export default function Navbar() {
     { name: "Trang chủ", href: "#hero" },
     { name: "Ứng dụng", href: "#app" },
     { name: "Câu chuyện", href: "#philosophy" },
-    { name: "Chỉ số sức khỏe", href: "#metrics" },
+    { name: "Dấu chân xanh", href: "#metrics" },
     { name: "Thực đơn xanh", href: "#menu" },
     { name: "Gói dịch vụ", href: "#pricing" },
   ];
@@ -86,7 +86,7 @@ export default function Navbar() {
                   "w-full bg-primary hover:bg-primary-light text-white font-medium rounded-full h-12 flex items-center justify-center transition-all",
               })}
             >
-              Thử Tính Toán Sức Khỏe
+              Trải Nghiệm Sống Xanh
             </a>
           </div>
         </div>
@@ -110,6 +110,19 @@ export default function Navbar() {
               </span>
             </a>
 
+            {/* Desktop Navigation Links */}
+            <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
+              {navItems.map((item) => (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  className="text-sm font-semibold text-text-secondary hover:text-primary transition-colors duration-200"
+                >
+                  {item.name}
+                </a>
+              ))}
+            </nav>
+
             <a
               href="#metrics"
               className={buttonVariants({
@@ -117,7 +130,7 @@ export default function Navbar() {
                   "bg-primary hover:bg-primary-light text-white font-bold rounded-full px-6 h-10 flex items-center justify-center transition-all duration-300 shadow-md shadow-primary/10 hover:shadow-primary-light/20 text-xs uppercase tracking-wider",
               })}
             >
-              Thử Tính Toán Sức Khỏe
+              Trải Nghiệm Sống Xanh
             </a>
           </div>
         </div>

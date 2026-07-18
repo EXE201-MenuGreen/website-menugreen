@@ -127,10 +127,10 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-[#F6FAEF] text-foreground;
+    @apply bg-[#F6FAEF] text-foreground overflow-x-hidden max-w-full;
   }
   html {
-    @apply font-sans scroll-smooth;
+    @apply font-sans scroll-smooth overflow-x-hidden max-w-full;
   }
   .landing-page {
     background-image:

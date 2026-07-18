@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Noto_Serif } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
@@ -15,6 +15,11 @@ const notoSerif = Noto_Serif({
   subsets: ["latin", "vietnamese"],
   display: "swap",
 });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
 
 export const metadata: Metadata = {
   title: "MenuGreen - Thực Đơn Xanh & Cân Bằng Dinh Dưỡng Lành Mạnh",

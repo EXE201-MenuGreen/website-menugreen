@@ -104,7 +104,7 @@ export default function AppDownloadSection() {
             >
               {[
                 { icon: CalendarDays, label: "Lịch bữa ăn", value: "7 ngày" },
-                { icon: ShieldCheck, label: "Mục tiêu", value: "BMI & macros" },
+                { icon: ShieldCheck, label: "Mục tiêu", value: "Khỏe Mạnh Mỗi Ngày" },
                 { icon: Bell, label: "Nhắc nhở", value: "Đúng giờ" },
               ].map((item) => (
                 <div
@@ -183,8 +183,9 @@ export default function AppDownloadSection() {
                 <div className="pointer-events-none absolute inset-px rounded-[2.6rem] border border-white/20" />
                 <div className="pointer-events-none absolute inset-[5px] z-30 rounded-[2.35rem] bg-gradient-to-br from-white/20 via-transparent to-transparent" />
                 <div className="absolute left-1/2 top-[5px] z-40 h-4 w-[5.2rem] -translate-x-1/2 rounded-b-2xl bg-slate-950 shadow-sm" />
-                <div className="relative overflow-hidden rounded-[2.28rem] bg-[#F6FAF6] min-h-[480px] sm:min-h-[500px] lg:min-h-[510px] lg:[transform:translateZ(8px)]">
-                  <div className="bg-white/90 border-b border-emerald-900/5 px-3.5 pt-7 pb-2.5">
+                <div className="relative overflow-hidden rounded-[2.28rem] bg-[#F6FAF6] aspect-[9/18.5] w-full lg:[transform:translateZ(8px)] flex flex-col">
+                  {/* Phone Header */}
+                  <div className="bg-white/90 border-b border-emerald-900/5 px-3.5 pt-7 pb-2.5 shrink-0">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
                         <div className="w-8 h-8 rounded-xl bg-primary text-white flex items-center justify-center">
@@ -203,76 +204,65 @@ export default function AppDownloadSection() {
                     </div>
                   </div>
 
-                  <div className="px-3.5 py-3.5 flex flex-col gap-2.5">
-                    <div className="rounded-2xl bg-primary p-3.5 text-white shadow-lg shadow-primary/20">
+                  {/* Phone Body Content */}
+                  <div className="p-3 flex-1 flex flex-col gap-2 justify-between overflow-hidden">
+                    <div className="rounded-2xl bg-primary p-3 text-white shadow-lg shadow-primary/20 shrink-0">
                       <div className="flex items-start justify-between gap-3">
                         <div>
-                          <p className="text-[10px] font-bold uppercase tracking-widest text-emerald-200">
+                          <p className="text-[9px] font-bold uppercase tracking-widest text-emerald-200">
                             Biểu ngữ hôm nay
                           </p>
-                          <h3 className="mt-1.5 text-base font-black leading-tight">
+                          <h3 className="mt-1 text-sm font-black leading-tight">
                             Ăn xanh đều đặn, cơ thể nhẹ hơn từng ngày.
                           </h3>
                         </div>
-                        <div className="w-9 h-9 rounded-xl bg-white/10 flex items-center justify-center shrink-0">
-                          <ShoppingBag className="w-4 h-4" />
+                        <div className="w-8 h-8 rounded-xl bg-white/10 flex items-center justify-center shrink-0">
+                          <ShoppingBag className="w-3.5 h-3.5" />
                         </div>
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-3 gap-2">
+                    <div className="grid grid-cols-3 gap-1.5 shrink-0">
                       {["Calo", "Protein", "Nước"].map((label, index) => (
                         <div
                           key={label}
-                          className="rounded-2xl bg-white p-2 text-center border border-emerald-900/5"
+                          className="rounded-xl bg-white p-1.5 text-center border border-emerald-900/5"
                         >
-                          <p className="text-[10px] font-bold uppercase text-text-light">{label}</p>
-                          <p className="mt-1 text-sm font-black text-text-dark">
+                          <p className="text-[8px] font-bold uppercase text-text-light">{label}</p>
+                          <p className="mt-0.5 text-xs font-black text-text-dark">
                             {["1.250", "82g", "2.3L"][index]}
                           </p>
                         </div>
                       ))}
                     </div>
 
-                    <div className="flex items-center justify-between">
-                      <h4 className="text-xs font-black text-text-dark">Lịch bữa tuần này</h4>
-                      <span className="rounded-full bg-primary/10 px-2.5 py-1 text-[9px] font-bold uppercase tracking-wider text-primary">
+                    <div className="flex items-center justify-between shrink-0">
+                      <h4 className="text-[11px] font-black text-text-dark">Lịch bữa tuần này</h4>
+                      <span className="rounded-full bg-primary/10 px-2 py-0.5 text-[8px] font-bold uppercase tracking-wider text-primary">
                         Đang hoạt động
                       </span>
                     </div>
 
-                    <div className="flex flex-col gap-2.5">
-                      {weeklyMeals.map((meal, index) => (
+                    <div className="flex flex-col gap-1.5 shrink-0">
+                      {weeklyMeals.slice(0, 2).map((meal, index) => (
                         <div
                           key={meal.name}
-                          className="rounded-2xl border border-emerald-900/5 bg-white p-2.5 shadow-sm"
+                          className="rounded-xl border border-emerald-900/5 bg-white p-2 shadow-sm"
                         >
-                          <div className="flex items-center gap-2.5">
-                            <div className="w-8 h-8 rounded-xl bg-emerald-50 text-primary flex items-center justify-center font-black text-sm">
+                          <div className="flex items-center gap-2">
+                            <div className="w-7 h-7 rounded-lg bg-emerald-50 text-primary flex items-center justify-center font-black text-xs shrink-0">
                               {index + 1}
                             </div>
                             <div className="min-w-0 flex-1">
-                              <p className="text-xs font-black text-text-dark truncate">{meal.name}</p>
-                              <p className="text-[11px] text-text-secondary">{meal.kcal}</p>
+                              <p className="text-[11px] font-black text-text-dark truncate">{meal.name}</p>
+                              <p className="text-[9px] text-text-secondary">{meal.kcal}</p>
                             </div>
-                            <span className="rounded-full bg-emerald-50 px-2.5 py-1 text-[9px] font-bold uppercase text-primary">
+                            <span className="rounded-full bg-emerald-50 px-2 py-0.5 text-[8px] font-bold uppercase text-primary shrink-0">
                               {meal.tag}
                             </span>
                           </div>
                         </div>
                       ))}
-                    </div>
-
-                    <div className="rounded-2xl bg-white p-2.5 border border-emerald-900/5">
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <p className="text-[11px] font-bold text-text-secondary uppercase tracking-wider">
-                            Trạng thái app
-                          </p>
-                          <p className="text-sm font-black text-text-dark">Đã có mặt trên CH Play</p>
-                        </div>
-                        <Play className="w-6 h-6 text-primary fill-current" />
-                      </div>
                     </div>
                   </div>
                 </div>
